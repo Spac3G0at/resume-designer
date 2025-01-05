@@ -5,9 +5,14 @@ import PageLoader from "../../pages/PageLoader";
 import useFetch from "../../hooks/useFetch";
 import NewResumeButton from "../NewResumeButton";
 import moment from "moment";
+import axios from "axios";
+import { useState } from "react";
 
 const ResumeCard = () => {
-  const { data, loading } = useFetch({ api: "resume/last-3" });
+  const [reload, setReload] = useState(0);
+  const { data, loading } = useFetch({ api: "resume/last-3", reload });
+
+  const handleReload = () => setReload((prev) => prev + 1);
 
   return (
     <Card>
@@ -23,7 +28,7 @@ const ResumeCard = () => {
 
       <div>
         {data?.map((resume) => (
-          <ResumeItem key={resume._id} resume={resume} />
+          <ResumeItem key={resume._id} resume={resume} reload={handleReload} />
         ))}
 
         {data?.length === 0 && (
@@ -70,12 +75,17 @@ const Footer = styled.div`
   margin-top: 16px;
 `;
 
-const ResumeItem = ({ resume }) => {
+const ResumeItem = ({ resume, reload }) => {
   const lastUpdatedDate = new Date(resume.updatedAt);
   const relativeTime = moment(lastUpdatedDate).fromNow();
 
-  const onDuplicate = () => {
-    console.log("DUPLICATE");
+  const onDuplicate = async () => {
+    try {
+      await axios.post(`resume/${resume._id}/duplicate`);
+      reload();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
