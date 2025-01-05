@@ -5,14 +5,23 @@ import moment from "moment";
 import { useRef, useState } from "react";
 import axios from "axios";
 
-const ResumeItem = ({ resume, large, onDelete }) => {
+const ResumeItem = ({ resume, large, reload }) => {
   const lastUpdatedDate = new Date(resume.updatedAt);
   const relativeTime = moment(lastUpdatedDate).fromNow();
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`resume/${id}`);
-      onDelete();
+      reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const onDuplicate = async () => {
+    try {
+      await axios.post(`resume/${resume._id}/duplicate`);
+      reload();
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +40,7 @@ const ResumeItem = ({ resume, large, onDelete }) => {
           <Link to={`/cv-editor/${resume._id}`}>
             <button>EDIT</button>
           </Link>
-          <button>DUPLICATE</button>
+          <button onClick={onDuplicate}>DUPLICATE</button>
           <a href={`/cv/${resume._id}`} target="_blank">
             <button>VIEW</button>
           </a>

@@ -94,7 +94,6 @@ router.get('/last-3', authenticateToken, async (req, res) => {
 
 
 });
-
 // Route to get all resumes for the authenticated user
 router.get('/:id', withUser, async (req, res) => {
 
@@ -119,6 +118,38 @@ router.get('/:id', withUser, async (req, res) => {
   }
 });
 
+router.post('/:id/duplicate', authenticateToken, async (req, res) => {
+
+  try {
+    const { id } = req.params;
+    const resume = await Resume.findOne({ _id: id, user: req.userId });
+
+    if (!resume) return res.status(404).json({ message: 'Resume not found or access denied' });
+
+
+    const copy = { ...resume._doc };
+
+    delete copy._id;
+    delete copy.__v;
+    delete copy.createdAt;
+    delete copy.updatedAt;
+
+    copy.name = `${copy.name} (copy)`;
+    copy.user = req.userId;
+
+    const newResume = new Resume({ ...copy });
+    await newResume.save();
+
+    res.status(201).json({ message: 'Resume duplicated successfully', resume: newResume });
+
+  } catch (err) {
+    console.error('Error duplicating resume:', err);
+    res.status(500).json({ message: 'Server error', error: err });
+  }
+
+});
+
+
 // Route to update a resume
 router.put('/:id', authenticateToken, async (req, res) => {
   try {
@@ -136,7 +167,7 @@ router.put('/:id', authenticateToken, async (req, res) => {
       return res.status(404).json({ message: 'Resume not found or access denied' });
     }
 
-    res.status(200).json({ message: 'Resume updated successfully', resume: updatedResume });
+    res.status(200).json({ message: 'Resume updated successfully' });
   } catch (error) {
     console.error('Error updating resume:', error);
     res.status(500).json({ message: 'Server error', error });

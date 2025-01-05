@@ -10,7 +10,7 @@ const ResumesPage = () => {
   const [reload, setReload] = useState(0);
   const { data, loading } = useFetch({ api: `resume`, reload });
 
-  const handleDelete = () => setReload((prev) => prev + 1);
+  const handleReload = () => setReload((prev) => prev + 1);
 
   return (
     <div>
@@ -18,7 +18,7 @@ const ResumesPage = () => {
       <Content>
         {data?.map((resume) => (
           <Card key={resume._id}>
-            <ResumeItem resume={resume} large onDelete={handleDelete} />
+            <ResumeItem resume={resume} large reload={handleReload} />
           </Card>
         ))}
         {data?.length === 0 && !loading && (

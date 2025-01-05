@@ -210,61 +210,65 @@ export const useCV = () => {
 const mockExperienceData = [
   {
     id: "exp1",
-    title: "Experience 1",
-    company: "ABC Company",
-    location: "New York, NY",
+    title: "Name of position held",
+    company: "Company name",
+    location: "location",
     from: "2024-12-15T23:00:00+00:00",
-    to: "2023-11-16T23:00:00+00:00",
+    to: "",
     description:
-      "<p>Elaborer et piloter la mise en place du Système intégré SIRH (Paie, Talent, Recrutement, Succession, Mobilité, Revue de salaire, Formation) Constituer et être le garant du budget. Réaliser les appels d?offres Piloter les équipes d?intégrations</p>",
+      "<p>Description of the job, responsibilities, and achievements.</p>",
   },
   {
     id: "exp2",
-    title: "Experience 2",
-    company: "XYZ Company",
-    location: "Los Angeles, CA",
-    from: "2024-12-15T23:00:00+00:00",
-    to: "2023-11-16T23:00:00+00:00",
+    title: "Name of position held",
+    company: "Company name",
+    location: "location",
+    from: "2023-11-16T23:00:00+00:00",
+    to: "2024-12-15T23:00:00+00:00",
     description:
-      "<p>Elaborer et piloter la mise en place du Système intégré SIRH (Paie, Talent, Recrutement, Succession, Mobilité, Revue de salaire, Formation) Constituer et être le garant du budget. Réaliser les appels d?offres Piloter les équipes d?intégrations</p>",
+      "<p>Managed daily operations in a fast-paced retail environment, ensuring high levels of customer satisfaction and operational efficiency. Trained and supervised a team of 10+ staff members, delegating tasks and providing ongoing support. Handled inventory management, restocking, and ensuring the store met safety and cleanliness standards. Actively assisted customers with product selections, addressing inquiries and resolving issues to ensure a positive shopping experience.</p>",
   },
 ];
 const mockEducationData = [
   {
     id: "ed1",
-    title: "Edcuation 1",
-    institution: "XYZ Institution",
-    location: "Los Angeles, CA",
-    from: "2024-12-15T23:00:00+00:00",
-    to: "2023-11-16T23:00:00+00:00",
+    title: "Name of the diploma obtained",
+    company: "school name",
+    location: "location",
+    to: "2024-12-15T23:00:00+00:00",
+    from: "2023-11-16T23:00:00+00:00",
     description:
-      "<p>Elaborer et piloter la mise en place du Système intégré SIRH (Paie, Talent, Recrutement, Succession, Mobilité, Revue de salaire, Formation) Constituer et être le garant du budget. Réaliser les appels d?offres Piloter les équipes d?intégrations</p>",
+      "<p>A description of the training, what you have learned, and your achievements.</p>",
   },
   {
     id: "ed2",
-    title: "Education 2",
-    institution: "123 Institution",
-    location: "San Francisco, CA",
-    from: "2024-12-15T23:00:00+00:00",
-    to: "2023-11-16T23:00:00+00:00",
+    title: "name of training",
+    company: "name of the training institution",
+    location: "location",
+    to: "2024-12-15T23:00:00+00:00",
+    from: "2023-11-16T23:00:00+00:00",
     description:
-      "<p>Elaborer et piloter la mise en place du Système intégré SIRH (Paie, Talent, Recrutement, Succession, Mobilité, Revue de salaire, Formation) Constituer et être le garant du budget. Réaliser les appels d?offres Piloter les équipes d?intégrations</p>",
+      "<p>The training focused on enhancing problem-solving skills and critical thinking. It included interactive workshops, group activities, and real-world scenarios to help participants improve their decision-making and teamwork abilities. By the end, attendees gained valuable insights and practical tools for handling challenges in various professional settings.</p>",
   },
 ];
 const mockSkillsData = [
   {
     id: "sk_1",
     label: "Communication",
-    skills: ["Listening", "Speaking"],
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.",
+      "Skilled in conveying ideas clearly and effectively, both in writing and verbally, to diverse audiences, ensuring understanding and facilitating productive discussions.",
   },
   {
     id: "sk_2",
     label: "Teamwork",
-    skills: ["Collaboration", "Leadership"],
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.",
+      "Experienced in collaborating with cross-functional teams, fostering a cooperative environment, and contributing to group objectives through active participation and mutual support.",
+  },
+  {
+    id: "sk_3",
+    label: "Problem Solving",
+    description:
+      "Adept at identifying issues, analyzing situations, and implementing creative and effective solutions to overcome challenges and improve processes.",
   },
 ];
 

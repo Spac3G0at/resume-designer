@@ -74,6 +74,10 @@ const ResumeItem = ({ resume }) => {
   const lastUpdatedDate = new Date(resume.updatedAt);
   const relativeTime = moment(lastUpdatedDate).fromNow();
 
+  const onDuplicate = () => {
+    console.log("DUPLICATE");
+  };
+
   return (
     <ResumeItemRoot>
       <img src={"https://placehold.co/65x91"} alt={resume.name} />
@@ -84,7 +88,7 @@ const ResumeItem = ({ resume }) => {
           <Link to={`/cv-editor/${resume._id}`}>
             <button>EDIT</button>
           </Link>
-          <button>DUPLICATE</button>
+          <button onClick={onDuplicate}>DUPLICATE</button>
           <a href={`/cv/${resume._id}`} target="_blank">
             <button>VIEW</button>
           </a>
