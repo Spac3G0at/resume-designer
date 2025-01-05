@@ -1,4 +1,6 @@
 import axios from "axios";
+import store from "../store";
+import { logout } from "../features/auth/authSlice";
 
 const baseURL = "http://localhost:5000/api/";
 
@@ -9,48 +11,20 @@ export const setAxios = () => {
   axios.defaults.headers["Content-Type"] = "application/json";
   axios.defaults.headers["Authorization"] = "Bearer " + localStorage.getItem("token");
 
-  // axios.interceptors.request.use(function (config) {
-  //   if (config.method === "post") {
-  //     try {
-  //       const body = config.data;
-  //       const obj: Partial<typeof body> = {};
-  //       for (const key in body) {
-  //         if (body[key] !== null && body[key] !== undefined) {
-  //           obj[key] = body[key];
-  //         }
-  //       }
-  //       config.data = obj;
-  //     } catch (err) {
-  //       return config;
-  //     }
-  //   }
+  axios.interceptors.response.use(
+    (response) => {
+      // If the response is successful, simply return it
+      return response;
+    },
+    (error) => {
+      // Check if the error is a 401 Unauthorized
+      if (error.response && error.response.status === 401) {
+        // Dispatch the logout action
+        store.dispatch(logout());
+      }
 
-  //   return config;
-  // });
-
-  // axios.interceptors.response.use(
-  //   function (error) {
-  //     // response error
-  //     if (
-  //       error?.response?.status === 401 &&
-  //       !window.location.pathname.includes("login") &&
-  //       !window.location.pathname.includes("account/params") &&
-  //       !window.location.pathname.includes("sign-up")
-  //     ) {
-  //       deleteCookie();
-  //       removeAxiosContext();
-  //       // setAxiosAuthHeaderToken("");
-  //       console.log("Disconnected");
-
-  //       sessionStorage.setItem("disconnected-path", window.location.pathname);
-
-  //       // alert disconnected
-
-  //       sessionStorage.setItem("disconnected", "401");
-  //       store.dispatch(logout());
-  //     }
-  //     // console.log("Intercepted error", error);
-  //     return Promise.reject(error?.response ?? error); // transform response.response -> response
-  //   }
-  // );
+      // Reject the error so it can be handled by the component
+      return Promise.reject(error);
+    }
+  );
 };

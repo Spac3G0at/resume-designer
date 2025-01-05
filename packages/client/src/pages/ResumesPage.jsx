@@ -3,9 +3,14 @@ import ResumeItem from "../components/resume/ResumeItem";
 import Card from "../components/Card";
 import styled from "styled-components";
 import useFetch from "../hooks/useFetch";
+import { useState } from "react";
+import NewResumeButton from "../components/NewResumeButton";
 
 const ResumesPage = () => {
-  const { data, loading } = useFetch("resume");
+  const [reload, setReload] = useState(0);
+  const { data, loading } = useFetch({ api: `resume`, reload });
+
+  const handleDelete = () => setReload((prev) => prev + 1);
 
   return (
     <div>
@@ -13,9 +18,15 @@ const ResumesPage = () => {
       <Content>
         {data?.map((resume) => (
           <Card key={resume._id}>
-            <ResumeItem resume={resume} large />
+            <ResumeItem resume={resume} large onDelete={handleDelete} />
           </Card>
         ))}
+        {data?.length === 0 && !loading && (
+          <div>
+            <p>{"You don't have any resume yet."}</p>
+            <NewResumeButton />
+          </div>
+        )}
       </Content>
     </div>
   );

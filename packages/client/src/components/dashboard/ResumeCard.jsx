@@ -7,27 +7,38 @@ import NewResumeButton from "../NewResumeButton";
 import moment from "moment";
 
 const ResumeCard = () => {
-  const { data, loading } = useFetch("resume/last-3");
+  const { data, loading } = useFetch({ api: "resume/last-3" });
 
   return (
     <Card>
       {loading && <PageLoader />}
       <Header>
         <h3>My resumes</h3>
-        <div>
-          <NewResumeButton />
-        </div>
+        {data?.length > 0 && (
+          <div>
+            <NewResumeButton />
+          </div>
+        )}
       </Header>
 
       <div>
         {data?.map((resume) => (
           <ResumeItem key={resume._id} resume={resume} />
         ))}
+
+        {data?.length === 0 && (
+          <NoResumeCtn>
+            <p>{"You don't have any resume yet."}</p>
+            <NewResumeButton />
+          </NoResumeCtn>
+        )}
       </div>
 
-      <Footer>
-        <Link to="/resumes">See all</Link>
-      </Footer>
+      {data?.length > 0 && (
+        <Footer>
+          <Link to="/resumes">See all</Link>
+        </Footer>
+      )}
     </Card>
   );
 };
@@ -45,6 +56,13 @@ const Header = styled.div`
   h3 {
     margin: 0;
   }
+`;
+
+const NoResumeCtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const Footer = styled.div`

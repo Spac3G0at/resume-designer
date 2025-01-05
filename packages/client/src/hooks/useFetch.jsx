@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useFetch = (api, cancelFirstCall = false, formatter = (data) => data) => {
+const useFetch = ({
+  api,
+  cancelFirstCall = false,
+  formatter = (data) => data,
+  reload = 0,
+}) => {
   const [data, setData] = useState(null);
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -50,7 +55,7 @@ const useFetch = (api, cancelFirstCall = false, formatter = (data) => data) => {
       source?.cancel("Cancelled");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [api]);
+  }, [api, reload]);
   if (mounted) return { data, loading, error, response };
 };
 export default useFetch;

@@ -7,7 +7,7 @@ import Loader from "./Loader";
 const Editor = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data, loading, error } = useFetch(`resume/${id}`);
+  const { data, loading, error } = useFetch({ api: `resume/${id}` });
 
   useEffect(() => {
     if (error && error?.code !== "ERR_CANCELED") {

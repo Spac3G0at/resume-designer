@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <Root>
       <nav>
-        <Link to="/">Resume creator</Link>
+        <Link to="/">Resume designer</Link>
         <RedoUndoBtnGroup>
           <button disabled={!canUndo} onClick={undo}>
             <i className="fa-solid fa-arrow-rotate-left"></i>

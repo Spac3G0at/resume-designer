@@ -57,7 +57,7 @@ const Side = () => {
   return (
     <>
       <SideRoot $open={open}>
-        <p>Resume creator</p>
+        <p>Resume designer</p>
         <Nav>
           <Link to="/dashboard">Home</Link>
           <Link to="/resumes">Resumes</Link>
