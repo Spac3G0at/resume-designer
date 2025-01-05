@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import { useCV } from "../../CVContext";
 import ConfirmModal from "../ConfirmModal";
+import SkillModal from "./SkillModal";
 
 const SkillItem = ({ skill, last, groupId }) => {
   const {
     removeFromMainGroup,
+    editFromMainGroup,
     cv: {
       settings: { resume_scale_factor },
     },
     setModal,
+    closeModal,
     editable,
   } = useCV();
 
@@ -21,14 +24,27 @@ const SkillItem = ({ skill, last, groupId }) => {
     );
   };
 
+  const edit = (item) => {
+    editFromMainGroup({ ...item, id: skill.id }, groupId);
+    closeModal();
+  };
+
+  const handleEdit = () => {
+    console.log("Edit skill");
+    setModal(<SkillModal skill={skill} cancel={closeModal} onAdd={edit} />);
+  };
+
   return (
     <Root $last={last}>
       <Title $f={resume_scale_factor}>{skill.label}</Title>
       <p style={{ margin: 0, color: "#444444" }}>{skill.description}</p>
 
       <Actions $editable={editable}>
+        <button onClick={handleEdit}>
+          <i className="fa-solid fa-pen-to-square"></i>
+        </button>
         <button onClick={handleRemove}>
-          <i className="fa-solid fa-trash"></i>
+          <i className="fa-solid fa-trash-can"></i>
         </button>
       </Actions>
     </Root>
@@ -38,19 +54,22 @@ const SkillItem = ({ skill, last, groupId }) => {
 export default SkillItem;
 
 const Actions = styled.div`
-  background: white;
+  background: #1a1a1a;
   position: absolute;
   top: 10px;
   right: 10px;
-  color: black;
+  padding: 5px;
+  color: white;
   opacity: 0; /* Hidden by default */
   visibility: hidden; /* Prevent interaction when hidden */
   transition: all 0.2s ease;
-  display: ${({ $editable }) => ($editable ? "block" : "none")};
+  align-items: center;
+  display: ${({ $editable }) => ($editable ? "flex" : "none")};
   button {
-    color: black;
+    color: var(--color);
     font-size: 12px;
     background: none;
+    padding: 2px 5px;
     border: none;
     i {
       transition: color 0.2s ease;

@@ -169,6 +169,23 @@ export const CVProvider = ({ children, editable, data }) => {
     update(updatedCV);
   };
 
+  const editFromMainGroup = (item, groupId) => {
+    const updatedCV = {
+      ...cv,
+      main: cv.main.map((el) =>
+        el.id === groupId
+          ? {
+              ...el,
+              data: el.data.map((dataItem) =>
+                dataItem.id === item.id ? item : dataItem
+              ),
+            }
+          : el
+      ),
+    };
+    update(updatedCV);
+  };
+
   return (
     <CVContext.Provider
       value={{
@@ -182,6 +199,7 @@ export const CVProvider = ({ children, editable, data }) => {
         updateMainGroupTitle,
         updateMain,
         removeMainGroup,
+        editFromMainGroup,
         settings,
         updateSettings,
         updatePartial,

@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import { useCV } from "../../CVContext";
 import ConfirmModal from "../ConfirmModal";
+import ExperienceModal from "./ExperienceModal";
 
 const ExperienceItem = ({ data, groupId, last }) => {
   const {
     removeFromMainGroup,
+    editFromMainGroup,
     cv: {
       settings: { timeline, resume_scale_factor },
     },
     setModal,
+    closeModal,
     editable,
   } = useCV();
 
@@ -17,6 +20,22 @@ const ExperienceItem = ({ data, groupId, last }) => {
       <ConfirmModal
         text="Remove this item ?"
         confirm={() => removeFromMainGroup(data.id, groupId)}
+      />
+    );
+  };
+
+  const edit = (item) => {
+    editFromMainGroup({ ...item, id: data.id }, groupId);
+    closeModal();
+  };
+
+  const handleEdit = () => {
+    setModal(
+      <ExperienceModal
+        onAdd={edit}
+        experience={data}
+        groupId={groupId}
+        cancel={closeModal}
       />
     );
   };
@@ -53,8 +72,11 @@ const ExperienceItem = ({ data, groupId, last }) => {
         <Description dangerouslySetInnerHTML={{ __html: data.description }} />
       </Content>
       <Actions $editable={editable}>
+        <button onClick={handleEdit}>
+          <i className="fa-solid fa-pen-to-square"></i>
+        </button>
         <button onClick={handleRemove}>
-          <i className="fa-solid fa-trash"></i>
+          <i className="fa-solid fa-trash-can"></i>
         </button>
       </Actions>
     </Root>
@@ -68,19 +90,22 @@ const Title = styled.strong`
 `;
 
 const Actions = styled.div`
-  background: white;
+  background: #1a1a1a;
   position: absolute;
   top: 10px;
   right: 10px;
-  color: black;
+  padding: 5px;
+  color: white;
   opacity: 0; /* Hidden by default */
   visibility: hidden; /* Prevent interaction when hidden */
   transition: all 0.2s ease;
-  display: ${({ $editable }) => ($editable ? "block" : "none")};
+  align-items: center;
+  display: ${({ $editable }) => ($editable ? "flex" : "none")};
   button {
-    color: black;
+    color: var(--color);
     font-size: 12px;
     background: none;
+    padding: 2px 5px;
     border: none;
     i {
       transition: color 0.2s ease;

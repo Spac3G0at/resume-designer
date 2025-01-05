@@ -1,13 +1,26 @@
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
-const ExperienceModal = ({ onAdd, cancel }) => {
+const ExperienceModal = ({ onAdd, cancel, experience }) => {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      title: experience?.title || "",
+      company: experience?.company || "",
+      location: experience?.location || "",
+      from: experience?.from
+        ? new Date(experience.from).toISOString().split("T")[0]
+        : "",
+      to: experience?.to
+        ? new Date(experience.to).toISOString().split("T")[0]
+        : "",
+      description: experience?.description || "",
+    },
+  });
 
   const onSubmit = (data) => {
     const item = {
@@ -27,6 +40,7 @@ const ExperienceModal = ({ onAdd, cancel }) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormGroup>
+        <h3 style={{ textAlign: "center" }}>Add</h3>
         <label htmlFor="title">Title:</label>
         <input
           id="title"
@@ -82,10 +96,10 @@ const ExperienceModal = ({ onAdd, cancel }) => {
 
       <BtnContainer>
         <ButtonGroup>
-          <ConfirmButton type="submit">Submit</ConfirmButton>
-          <CancelButton type="button" onClick={cancel}>
-            Cancel
-          </CancelButton>
+          <Button type="submit">SUBMIT</Button>
+          <Button $outlined type="button" onClick={cancel}>
+            CANCEL
+          </Button>
         </ButtonGroup>
       </BtnContainer>
     </Form>
@@ -119,25 +133,12 @@ const ButtonGroup = styled.div`
   justify-content: space-evenly;
   width: 300px;
 `;
-
-const ConfirmButton = styled.button`
-  background-color: #4caf50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100px;
-`;
-
-const CancelButton = styled.button`
-  background-color: transparent;
-  color: #c80404;
-  border: 1px solid #c80404;
-  padding: 14px 20px;
-  margin: 8px 0;
-  cursor: pointer;
-  width: 100px;
+const Button = styled.button`
+  background: ${({ $outlined }) => ($outlined ? "none" : "#ed2553")};
+  color: ${({ $outlined }) => ($outlined ? "#ed2553" : "white")};
+  padding: 8px 16px;
+  font-size: 14px;
+  border: 2px solid #ed2553;
 `;
 
 const ErrorMessage = styled.small`

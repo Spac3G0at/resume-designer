@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
-const SkillModal = ({ onAdd, cancel }) => {
+const SkillModal = ({ onAdd, cancel, skill }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      label: "",
-      description: "",
+      label: skill?.label || "",
+      description: skill?.description || "",
     },
   });
 
@@ -19,9 +19,9 @@ const SkillModal = ({ onAdd, cancel }) => {
 
   return (
     <div>
-      <h2>Add a New Skill</h2>
+      <h3 style={{ textAlign: "center" }}>Add a New Skill</h3>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <div className="item">
           <label>label:</label>
           <input
             type="text"
@@ -31,7 +31,7 @@ const SkillModal = ({ onAdd, cancel }) => {
           {errors.label && <span>{errors.label.message}</span>}
         </div>
 
-        <div>
+        <div className="item">
           <label>Description:</label>
 
           <input
@@ -44,10 +44,12 @@ const SkillModal = ({ onAdd, cancel }) => {
           {errors.description && <span>{errors.description.message}</span>}
         </div>
 
-        <button type="submit">Add Skill</button>
-        <button onClick={cancel} type="button">
-          Cancel
-        </button>
+        <BtnCtn>
+          <Button type="submit">SUBMIT</Button>
+          <Button $outlined onClick={cancel} type="button">
+            CANCEL
+          </Button>
+        </BtnCtn>
       </Form>
     </div>
   );
@@ -59,9 +61,25 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  div {
+  width: 550px;
+  div.item {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
+`;
+
+const BtnCtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const Button = styled.button`
+  background: ${({ $outlined }) => ($outlined ? "none" : "#ed2553")};
+  color: ${({ $outlined }) => ($outlined ? "#ed2553" : "white")};
+  padding: 8px 16px;
+  font-size: 14px;
+  border: 2px solid #ed2553;
 `;

@@ -49,6 +49,7 @@ const ButtonGroup = styled.div`
 const ConfirmButton = styled.button`
   background-color: #ed2553;
   color: white;
+  border: 1px solid #ed2553;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -58,8 +59,8 @@ const ConfirmButton = styled.button`
 
 const CancelButton = styled.button`
   background-color: transparent;
-  color: #c80404;
-  border: 1px solid #c80404;
+  color: #ed2553;
+  border: 1px solid #ed2553;
   padding: 14px 20px;
   margin: 8px 0;
   cursor: pointer;
