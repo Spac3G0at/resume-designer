@@ -7,6 +7,7 @@ import NewResumeButton from "../NewResumeButton";
 import moment from "moment";
 import axios from "axios";
 import { useState } from "react";
+import ResumeDotMenu from "../resume/ResumeDotMenu";
 
 const ResumeCard = () => {
   const [reload, setReload] = useState(0);
@@ -88,6 +89,15 @@ const ResumeItem = ({ resume, reload }) => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`resume/${resume._id}`);
+      reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <ResumeItemRoot>
       <Link to={`/cv-editor/${resume._id}`}>
@@ -110,12 +120,14 @@ const ResumeItem = ({ resume, reload }) => {
           </a>
         </ButtonsGroup>
       </Infos>
+      <ResumeDotMenu onDelete={handleDelete} />
     </ResumeItemRoot>
   );
 };
 
 const ResumeItemRoot = styled.div`
   display: flex;
+  position: relative;
   img {
     margin-right: 12px;
     border-radius: 4px;

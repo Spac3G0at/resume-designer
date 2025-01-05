@@ -30,7 +30,6 @@ const SkillItem = ({ skill, last, groupId }) => {
   };
 
   const handleEdit = () => {
-    console.log("Edit skill");
     setModal(<SkillModal skill={skill} cancel={closeModal} onAdd={edit} />);
   };
 
