@@ -10,17 +10,23 @@ const TemplateTopInfosHeader = () => {
       <Text
         element="h1"
         className="name"
-        style={{
-          fontSize: "24px",
-          fontWeight: "bold",
-          lineHeight: "28px",
-        }}
         onChange={(value) => updatePartial({ fullname: value })}
       >
         {cv.fullname}
       </Text>
 
-      <CVName className="resume-title">Frontend web developer</CVName>
+      <CVName>
+        <Text
+          element="h1"
+          style={{ margin: "0px" }}
+          className="resume-title"
+          onChange={(value) => updatePartial({ title: value })}
+        >
+          {cv.title}
+        </Text>
+      </CVName>
+
+      <Description dangerouslySetInnerHTML={{ __html: cv.description }} />
     </div>
   );
 };
@@ -31,4 +37,9 @@ const CVName = styled.div`
   font-weight: bold;
   line-height: 17px;
   font-size: 19px;
+`;
+
+const Description = styled.p`
+  margin-top: 10px;
+  margin-bottom: 0;
 `;

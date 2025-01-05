@@ -15,7 +15,16 @@ const Template1Header = () => {
         {cv.fullname}
       </Text>
 
-      <CVName className="resume-title">{cv.title}</CVName>
+      <CVName>
+        <Text
+          element="h1"
+          style={{ margin: "0px" }}
+          className="resume-title"
+          onChange={(value) => updatePartial({ title: value })}
+        >
+          {cv.title}
+        </Text>
+      </CVName>
 
       <Description dangerouslySetInnerHTML={{ __html: cv.description }} />
     </div>
