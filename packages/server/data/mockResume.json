@@ -1,0 +1,140 @@
+{
+  "fullname": "John Doe",
+  "firstname": "John",
+  "lastname": "Doe",
+  "name": "Mock resume",
+  "age": 25,
+  "email": "john.doe@anymail.com",
+  "address": "123 Main St, New York, NY 10030",
+  "phone": "123-456-7890",
+  "social": {
+    "facebook": "https://www.facebook.com/johndoe",
+    "twitter": "https://www.twitter.com/johndoe",
+    "linkedin": "https://www.linkedin.com/johndoe"
+  },
+  "languages": [
+    {
+      "name": "English",
+      "level": "Native"
+    },
+    {
+      "name": "Spanish",
+      "level": "Conversational"
+    }
+  ],
+  "hobbies": [
+    "Reading",
+    "Traveling",
+    "Photography"
+  ],
+  "title": "Frontend web developer",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.",
+  "main": [
+    {
+      "id": "experiences_1",
+      "type": "experiences",
+      "title": "Experiences",
+      "data": [
+        {
+          "id": "exp1",
+          "title": "Frontend Developer",
+          "company": "ABC Company",
+          "location": "New York, NY",
+          "to": "2024-12-15T23:00:00+00:00",
+          "from": "2023-11-16T23:00:00+00:00",
+          "description": "<p>Elaborer et piloter la mise en place du Système intégré SIRH (Paie, Talent, Recrutement, Succession, Mobilité, Revue de salaire, Formation) Constituer et être le garant du budget. Réaliser les appels d?offres Piloter les équipes d?intégrations</p>"
+        },
+        {
+          "id": "exp2",
+          "title": "Web Developer",
+          "company": "XYZ Company",
+          "location": "Los Angeles, CA",
+          "to": "2024-12-15T23:00:00+00:00",
+          "from": "2023-11-16T23:00:00+00:00",
+          "description": "<p>Elaborer et piloter la mise en place du Système intégré SIRH (Paie, Talent, Recrutement, Succession, Mobilité, Revue de salaire, Formation) Constituer et être le garant du budget. Réaliser les appels d?offres Piloter les équipes d?intégrations</p>"
+        },
+        {
+          "id": "exp3",
+          "title": "Junior Developer",
+          "company": "123 Company",
+          "location": "San Francisco, CA",
+          "to": "2024-12-15T23:00:00+00:00",
+          "from": "2023-11-16T23:00:00+00:00",
+          "description": "<p>Elaborer et piloter la mise en place du Système intégré SIRH (Paie, Talent, Recrutement, Succession, Mobilité, Revue de salaire, Formation) Constituer et être le garant du budget. Réaliser les appels d?offres Piloter les équipes d?intégrations</p>"
+        }
+      ]
+    },
+    {
+      "id": "education_1",
+      "type": "education",
+      "title": "Education",
+      "data": [
+        {
+          "id": "ed1",
+          "title": "Web Design",
+          "institution": "XYZ Institution",
+          "location": "Los Angeles, CA",
+          "to": "2024-12-15T23:00:00+00:00",
+          "from": "2023-11-16T23:00:00+00:00",
+          "description": "<p>Elaborer et piloter la mise en place du Système intégré SIRH (Paie, Talent, Recrutement, Succession, Mobilité, Revue de salaire, Formation) Constituer et être le garant du budget. Réaliser les appels d?offres Piloter les équipes d?intégrations</p>"
+        },
+        {
+          "id": "ed2",
+          "title": "Web Development",
+          "institution": "123 Institution",
+          "location": "San Francisco, CA",
+          "to": "2024-12-15T23:00:00+00:00",
+          "from": "2023-11-16T23:00:00+00:00",
+          "description": "<p>Elaborer et piloter la mise en place du Système intégré SIRH (Paie, Talent, Recrutement, Succession, Mobilité, Revue de salaire, Formation) Constituer et être le garant du budget. Réaliser les appels d?offres Piloter les équipes d?intégrations</p>"
+        }
+      ]
+    },
+    {
+      "id": "softskills",
+      "type": "skills",
+      "title": "Skills",
+      "data": [
+        {
+          "id": "sk_1",
+          "label": "Communication",
+          "skills": [
+            "Listening",
+            "Speaking"
+          ],
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc."
+        },
+        {
+          "id": "sk_2",
+          "label": "Teamwork",
+          "skills": [
+            "Collaboration",
+            "Leadership"
+          ],
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc."
+        },
+        {
+          "id": "sk_3",
+          "label": "Problem Solving",
+          "skills": [
+            "Critical Thinking",
+            "Creativity"
+          ],
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc."
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "theme": "light",
+    "font": "Lato",
+    "fontSize": "normal",
+    "resume_title_color": "#2babe2",
+    "company_color": "#2babe2",
+    "title_color": "#2babe2",
+    "name_color": "#000000",
+    "timeline": true,
+    "template": "default",
+    "resume_scale_factor": 1,
+    "resume_title_scale_factor": 1
+  }
+}

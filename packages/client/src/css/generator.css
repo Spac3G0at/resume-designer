@@ -1,0 +1,41 @@
+:root {
+  --resume-scale-factor: 1;
+  --resume-title-scale-factor: 1;
+  --h1-font-size: calc(24px * var(--resume-title-scale-factor));
+  --h2-font-size: calc(20px * var(--resume-title-scale-factor));
+  --h3-font-size: calc(18px * var(--resume-title-scale-factor));
+  --h4-font-size: calc(16px * var(--resume-title-scale-factor));
+  --h5-font-size: calc(14px * var(--resume-title-scale-factor));
+  --h6-font-size: calc(12px * var(--resume-title-scale-factor));
+  --p-font-size: calc(12px * var(--resume-scale-factor));
+}
+
+#cv h1 {
+  font-size: var(--h1-font-size);
+}
+
+#cv h2 {
+  font-size: var(--h2-font-size);
+}
+
+#cv h3 {
+  font-size: var(--h3-font-size);
+}
+
+#cv h4 {
+  font-size: var(--h4-font-size);
+}
+
+#cv h5 {
+  font-size: var(--h5-font-size);
+}
+
+#cv h6 {
+  font-size: var(--h6-font-size);
+}
+
+#cv p {
+  font-size: var(--p-font-size);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
