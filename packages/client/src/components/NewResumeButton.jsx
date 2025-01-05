@@ -40,17 +40,27 @@ const NewResumeButton = () => {
       <Button onClick={openModal}>NEW RESUME</Button>
       <ModalPortal isOpen={open} onClose={close}>
         <Form onSubmit={handleSubmit(onSubmit)}>
+          <h3>Create a new resume</h3>
           <label>
             Give your resume a name
-            <input {...register("name", { required: true })} />
+            <input
+              placeholder="ex: Search for permanent position, internship, target company"
+              {...register("name", { required: true })}
+            />
           </label>
           <label>
             Position sought or sector of activity
-            <input {...register("title", { required: true })} />
+            <input
+              placeholder="ex: Web developer, Product manager"
+              {...register("title", { required: true })}
+            />
           </label>
-          <div>
-            <button type="submit">Create</button>
-          </div>
+          <ModalButtonsGroup>
+            <Button type="submit">CREATE</Button>
+            <Button $outlined type="button" onClick={close}>
+              CANCEL
+            </Button>
+          </ModalButtonsGroup>
         </Form>
       </ModalPortal>
     </>
@@ -60,13 +70,28 @@ const NewResumeButton = () => {
 export default NewResumeButton;
 
 const Button = styled.button`
-  background: #ed2553;
+  background: ${({ $outlined }) => ($outlined ? "none" : "#ed2553")};
+  color: ${({ $outlined }) => ($outlined ? "#ed2553" : "white")};
+  padding: 8px 16px;
   font-size: 14px;
+  border: 2px solid #ed2553;
 `;
+
+const ModalButtonsGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+`;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 1rem;
+  width: 550px;
+  h3 {
+    text-align: center;
+    margin: 0.5rem;
+  }
   label {
     display: flex;
     flex-direction: column;
@@ -78,13 +103,5 @@ const Form = styled.form`
   }
   div {
     text-align: center;
-  }
-  button {
-    background: #ed2553;
-    color: white;
-    padding: 8px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
   }
 `;

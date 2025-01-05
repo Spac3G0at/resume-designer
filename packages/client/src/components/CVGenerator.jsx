@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
-import Template1 from "../templates/SideColumn.jsx/Template1";
+import Template1 from "../templates/default/Template1";
 import { useCV } from "../CVContext";
 import TemplateTopInfos from "../templates/TopInfos/TemplateTopInfos";
 import "../css/generator.css";

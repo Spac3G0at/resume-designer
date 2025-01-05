@@ -6,6 +6,7 @@ import { useCV } from "../../CVContext";
 import Template1Header from "./Template1Header";
 import Icon from "../../components/Icon";
 import SkillsBlocks from "../../components/skills/SkillsBlocks";
+import DefaultSide from "./DefaultSide";
 
 const Template1 = () => {
   const { cv, updateMain } = useCV();
@@ -25,17 +26,9 @@ const Template1 = () => {
 
   return (
     <Root>
-      <SideBar>
-        <SideContainer>
-          <p>
-            <Icon icon={"\uf0e0"} />
-            {cv.email}
-          </p>
-        </SideContainer>
-      </SideBar>
+      <DefaultSide />
       <Main>
         <Template1Header />
-
         <Content>
           <AddBlockSelector container={"main"} />
           <DragBlocks main items={blocks} onReorder={setBlocks} />

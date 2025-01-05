@@ -53,8 +53,6 @@ router.post('/', authenticateToken, async (req, res) => {
 
     const data = { ...resumeMock, ...resumeData };
 
-    console.log(data)
-
     // Create a new resume
     const newResume = new Resume(data);
     await newResume.save();

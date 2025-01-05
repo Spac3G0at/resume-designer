@@ -2,14 +2,41 @@ import styled from "styled-components";
 import { useCV } from "../CVContext";
 import DownloadButton from "./DownloadButton";
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const { undo, redo, canRedo, canUndo } = useCV();
+  const { undo, redo, canRedo, canUndo, cv, updatePartial } = useCV();
+
+  const [value, setValue] = useState(cv.name);
+
+  useEffect(() => {
+    setValue(cv.name);
+  }, [cv.name]);
+
+  const onValueChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleChange = () => {
+    updatePartial({ name: value });
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.target.blur(); // Trigger blur when Enter key is pressed
+    }
+  };
 
   return (
     <Root>
       <nav>
         <Link to="/">Resume designer</Link>
+        <Name
+          value={value}
+          onChange={onValueChange}
+          onBlur={handleChange}
+          onKeyDown={handleKeyDown}
+        />
         <RedoUndoBtnGroup>
           <button disabled={!canUndo} onClick={undo}>
             <i className="fa-solid fa-arrow-rotate-left"></i>
@@ -57,4 +84,17 @@ const RedoUndoBtnGroup = styled.div`
       cursor: not-allowed;
     }
   }
+`;
+
+const Name = styled.input`
+  max-width: 150px;
+  width: 150px;
+  margin-left: 20px;
+  height: 20px;
+  padding: 5px;
+  overflow: hidden; /* Prevent text from overflowing */
+  text-overflow: ellipsis; /* Show ellipsis when text overflows */
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  border-color: var(--color);
+  background: transparent; /* Optional, to make the background transparent */
 `;

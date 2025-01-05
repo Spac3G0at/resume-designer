@@ -24,8 +24,8 @@ const Overlay = styled.div`
 `;
 
 const Content = styled.div`
-  background: white;
-  color: black;
+  background: var(--paper-color);
+  color: var(--color);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -40,7 +40,7 @@ const CloseButton = styled.button`
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: black;
+  color: var(--color);
   cursor: pointer;
   padding: 0;
   &:hover {
