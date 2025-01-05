@@ -70,7 +70,7 @@ const SkillsBlocks = ({ data, title, groupId }) => {
           <i className="fa-solid fa-trash-can"></i>
         </button>
         <button onClick={openModal}>
-          <i className="fa-solid fa-plus"></i> Ajouter
+          <i className="fa-solid fa-plus"></i> Add
         </button>
       </Actions>
     </Root>

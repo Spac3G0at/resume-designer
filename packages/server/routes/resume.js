@@ -72,7 +72,7 @@ router.post('/', authenticateToken, async (req, res) => {
 router.get('/', authenticateToken, async (req, res) => {
   try {
     // Find resumes belonging to the authenticated user
-    const resumes = await Resume.find({ user: req.userId }).select('name title fullname updatedAt createdAt').sort({ updatedAt: -1 });
+    const resumes = await Resume.find({ user: req.userId }).select('name title fullname updatedAt createdAt settings.template').sort({ updatedAt: -1 });
 
     res.status(200).json(resumes);
   } catch (error) {
@@ -84,7 +84,7 @@ router.get('/', authenticateToken, async (req, res) => {
 router.get('/last-3', authenticateToken, async (req, res) => {
   try {
     // Find resumes belonging to the authenticated user
-    const resumes = await Resume.find({ user: req.userId }).select('name title fullname updatedAt createdAt').sort({ updatedAt: -1 }).limit(3);
+    const resumes = await Resume.find({ user: req.userId }).select('name title fullname updatedAt createdAt settings.template').sort({ updatedAt: -1 }).limit(3);
 
     res.status(200).json(resumes);
   } catch (error) {

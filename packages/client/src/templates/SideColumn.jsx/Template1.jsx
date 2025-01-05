@@ -111,7 +111,7 @@ const AddBlockSelector = ({ container }) => {
   return (
     <SelectorRoot $active={active}>
       <div>
-        <button onClick={handleAdd}>Ajouter ici</button>
+        <button onClick={handleAdd}>Add here</button>
       </div>
     </SelectorRoot>
   );

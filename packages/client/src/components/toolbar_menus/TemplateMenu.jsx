@@ -11,10 +11,12 @@ const TemplateMenu = () => {
     {
       name: "Default",
       value: "default",
+      img: "/img/templates/default.jpg",
     },
     {
       name: "Top Infos",
       value: "topinfos",
+      img: "/img/templates/topinfos.jpg",
     },
   ];
   return (
@@ -25,6 +27,7 @@ const TemplateMenu = () => {
           $current={template === option.value}
           onClick={() => update("template", option.value)}
         >
+          <Img src={option.img} alt={option.name} />
           {option.name}
         </TemplateButton>
       ))}
@@ -42,4 +45,13 @@ const Root = styled.div`
 
 const TemplateButton = styled.button`
   color: ${({ $current }) => ($current ? "grey" : "white")};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+`;
+
+const Img = styled.img`
+  width: 65px;
 `;

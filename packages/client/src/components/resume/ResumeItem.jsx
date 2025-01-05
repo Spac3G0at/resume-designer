@@ -29,10 +29,14 @@ const ResumeItem = ({ resume, large, reload }) => {
 
   return (
     <ResumeItemRoot>
-      <img
-        src={`https://placehold.co/${large ? 150 : 65}x${large ? 210 : 91}`}
-        alt={resume.name}
-      />
+      <Link to={`/cv-editor/${resume._id}`}>
+        <img
+          width={`${large ? 150 : 65}px`}
+          src={`/img/templates/${resume.settings.template}.jpg`}
+          alt={resume.name}
+        />
+      </Link>
+
       <Infos>
         <Link to={`/cv-editor/${resume._id}`}>{resume.name}</Link>
         <small>Updated {relativeTime}</small>
