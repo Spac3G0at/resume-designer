@@ -39,7 +39,7 @@ const ResumeDotMenu = ({ onDelete }) => {
       {isOpen && (
         <Popover>
           <MenuItem disabled={loading} onClick={askDelete}>
-            Delete
+            DELETE
           </MenuItem>
         </Popover>
       )}
