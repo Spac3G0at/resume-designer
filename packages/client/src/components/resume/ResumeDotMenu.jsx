@@ -33,7 +33,9 @@ const ResumeDotMenu = ({ onDelete }) => {
 
   return (
     <MenuWrapper ref={menuRef}>
-      <DotsButton onClick={toggleMenu}>⋮</DotsButton>
+      <DotsButton onClick={toggleMenu}>
+        <i className="fa-solid fa-ellipsis-vertical"></i>
+      </DotsButton>
       {isOpen && (
         <Popover>
           <MenuItem disabled={loading} onClick={askDelete}>

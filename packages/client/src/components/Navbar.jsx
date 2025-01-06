@@ -23,14 +23,16 @@ const Navbar = () => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      e.target.blur(); // Trigger blur when Enter key is pressed
+      e.target.blur();
     }
   };
+
+  const backLink = window.history.length > 1 ? -1 : "/";
 
   return (
     <Root>
       <nav>
-        <Link to="/">Resume designer</Link>
+        <Link to={backLink}>Resume designer</Link>
         <Name
           value={value}
           onChange={onValueChange}

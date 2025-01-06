@@ -8,7 +8,7 @@ const TemplateTopInfosHeader = () => {
   return (
     <div>
       <Text
-        element="h1"
+        element="h3"
         className="name"
         onChange={(value) => updatePartial({ fullname: value })}
       >
@@ -17,7 +17,7 @@ const TemplateTopInfosHeader = () => {
 
       <CVName>
         <Text
-          element="h1"
+          element="h3"
           style={{ margin: "0px" }}
           className="resume-title"
           onChange={(value) => updatePartial({ title: value })}

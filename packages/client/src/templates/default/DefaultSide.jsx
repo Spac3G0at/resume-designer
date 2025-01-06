@@ -10,7 +10,7 @@ const DefaultSide = () => {
       <SideContainer>
         <Item>
           <Icon icon={"\uf0e0"} />
-          <p>{cv.email}</p>
+          <a href={`mailto:${cv.email}`}>{cv.email}</a>
         </Item>
         <Item>
           <Icon icon={"\uf095"} />
@@ -61,11 +61,13 @@ const SideContainer = styled.div`
 
 const Item = styled.div`
   display: flex;
-  p {
+  p,
+  a {
     margin: 0;
     word-break: break-word;
     display: flex;
     align-items: center;
+    color: white;
   }
 `;
 
